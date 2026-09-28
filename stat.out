@@ -1,0 +1,27 @@
+  File: /home/user1
+  Size: 116       	Blocks: 0          IO Block: 4096   directory
+Device: 0,50	Inode: 694         Links: 1
+Access: (0700/drwx------)  Uid: ( 1234/   user1)   Gid: ( 1234/   user1)
+Context: unconfined_u:object_r:user_home_dir_t:s0
+Access: 2026-09-25 19:24:12.163280350 +0300
+Modify: 2026-01-01 00:00:10.412168240 +0300
+Change: 2026-09-25 19:24:11.784280417 +0300
+ Birth: 2026-09-23 20:32:29.993000000 +0300
+  File: /home/arkom/my_cat
+  Size: 40696     	Blocks: 80         IO Block: 4096   regular file
+Device: 0,50	Inode: 26314       Links: 1
+Access: (4755/-rwsr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: unconfined_u:object_r:user_home_t:s0
+Access: 2026-09-25 19:24:17.567159632 +0300
+Modify: 2026-09-25 19:24:17.478279400 +0300
+Change: 2026-09-25 19:24:17.566279384 +0300
+ Birth: 2026-09-25 19:24:17.478279400 +0300
+  File: /home/arkom/my_chown
+  Size: 69984     	Blocks: 144        IO Block: 4096   regular file
+Device: 0,50	Inode: 26317       Links: 1
+Access: (0755/-rwxr-xr-x)  Uid: ( 1000/   arkom)   Gid: ( 1000/   arkom)
+Context: unconfined_u:object_r:user_home_t:s0
+Access: 2026-09-25 19:24:17.625279373 +0300
+Modify: 2026-09-25 19:24:17.583279381 +0300
+Change: 2026-09-25 19:24:17.620279374 +0300
+ Birth: 2026-09-25 19:24:17.583279381 +0300

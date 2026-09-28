@@ -1,0 +1,58 @@
+    1  sudo groupadd students
+    2  sudo useradd -u 1234 -G students -m -s /bin/bash user1
+    3  sudo passwd user1
+    4  sudo chage -M 90 user1
+    5  id user1
+    6  sudo chage -l user1
+    7  sudo find / -perm -4000 -type f 2>/dev/null | head -n 15
+    8  ps -eo pid,ruid,euid,comm | awk 'NR==1 || ($3 == 0 && $2 != 0)'
+    9  cat /etc/shadow
+   10  sudo -l
+   11  sudo nano /etc/ssh/sshd_config
+   12  ip a
+   13  sudo systemctl status sshd
+   14  sudo systemctl enable sshd --now
+   15  getent group students || sudo groupadd students
+   16  getent passwd user1 || sudo useradd -u 1234 -G students -m -s /bin/bash user1
+   17  sudo usermod -aG students user1
+   18  sudo chown -R user1:user1 /home/user1
+   19  echo 'Student2026!' | sudo passwd --stdin user1
+   20  sudo chage -M 90 -W 7 user1
+   21  sudo chage -l user1
+   22  id user1
+   23  grep -E '^(user1|students):' /etc/passwd /etc/group
+   24  sudo grep '^user1:' /etc/shadow
+   25  stat /home/user1
+   26  sudo find / -path /proc -prune -o -type f -perm -4000 -exec ls -l {} + 2>/dev/null | tee ~/setuid-files.out
+   27  ps -eo pid,ruser,euser,ruid,euid,comm | awk 'NR==1 || ($5==0 && $4!=0)' | tee ~/processes.out
+   28  rm -f ~/my_cat ~/.out
+   29  cat /etc/shadow
+   30  cp /usr/bin/cat ~/my_cat
+   31  sudo chown root:root ~/my_cat
+   32  sudo chmod u+s ~/my_cat
+   33  ls -l ~/my_cat
+   34  ~/my_cat /etc/shadow | head -n 3
+   35  ~/my_cat /etc/shadow | grep '^user1:' | tee ~/setuid-demo.out
+   36  touch ~/testfile.txt
+   37  chown root ~/testfile.txt
+   38  cp /usr/bin/chown ~/my_chown
+   39  sudo setcap cap_chown=ep ~/my_chown
+   40  getcap ~/my_chown
+   41  ~/my_chown root ~/testfile.txt
+   42  ls -l ~/testfile.txt | tee ~/capability-demo.out
+   43  sudo visudo -c
+   44  sudo grep -n '^user1' /etc/sudoers
+   45  sudo -l -U user1
+   46  echo 'Student2026!' | sudo -u user1 sudo -S date -s "$(date '+%Y-%m-%d %H:%M:%S')" 2>&1 | tee ~/sudo-demo.out
+   47  echo 'Student2026!' | sudo -u user1 sudo -S cat /etc/shadow 2>&1 | tee -a ~/sudo-demo.out
+   48  mkdir -p ~/mephi-artifacts/etc
+   49  stat /home/user1 > ~/stat.out
+   50  stat ~/my_cat >> ~/stat.out
+   51  stat ~/my_chown >> ~/stat.out
+   52  getcap ~/my_chown > ~/getcap.out
+   53  cat /etc/passwd > ~/mephi-artifacts/etc/passwd
+   54  cat /etc/group > ~/mephi-artifacts/etc/group
+   55  sudo cat /etc/shadow > ~/mephi-artifacts/etc/shadow
+   56  sudo cat /etc/sudoers > ~/mephi-artifacts/etc/sudoers
+   57  cp ~/stat.out ~/getcap.out ~/setuid-files.out ~/processes.out ~/setuid-demo.out ~/capability-demo.out ~/sudo-demo.out ~/mephi-artifacts/
+   58  history > ~/history.out
